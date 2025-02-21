@@ -9,6 +9,14 @@ export type ItemType = {
     imageUrl: string,
     description: string,
     weight: number,
-    degrade: number
-    decay: boolean
+}
+
+export type ItemType2 = {
+    name: string,
+    metadata: {
+        label: string,
+        imageurl: string,
+        description: string,
+        weight: number,
+    },
 }

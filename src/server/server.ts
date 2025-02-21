@@ -1,4 +1,4 @@
-import type { ItemType } from "../types"
+import type { ItemType, ItemType2 } from "../types"
 
 class Main {
     constructor() {
@@ -11,8 +11,8 @@ class Main {
             emitNet("br_itemcreator:showUi", id)
         }, false)
         
-        exports("itemUsed", (event: string, item: object, inventory: number|string, slot: number, data: object) => {
-            this.itemUsed(event, item, inventory, slot, data)
+        onNet("br_itemcreator:itemUsed", (item: ItemType2) => {
+            this.itemUsed(source, item)
         })
     }
 
@@ -20,13 +20,14 @@ class Main {
         return true
     }
 
-    private itemUsed(event: string, item: object, inventory: number|string, slot: number, data: object) {
-        console.log("event", event)
-        console.log("item", item)
-        console.log("inventory", inventory)
-        console.log("slot", slot)
-        console.log("data", data)
-        // TODO
+    private itemUsed(id: number, item: ItemType2) {
+        if (!this.isAllowed(id)) { return }
+        exports["ox_inventory"].AddItem(id, item.name, 1, {
+            label: item.metadata.label,
+            weight: item.metadata.weight,
+            description: item.metadata.description,
+            imageurl: item.metadata.imageurl,
+        })
     }
 
     private async createItem(item: ItemType, id: number) {
@@ -43,15 +44,13 @@ class Main {
             `\t\t},\n` +
             `\t\tdescription = "${item.description}",\n` +
             `\t\tweight = ${item.weight},\n` +
-            `\t\tdegrade = ${item.degrade},\n` +
-            `\t\tdecay = ${item.decay}\n` +
         `\t},\n`;
 
         const updatedItems = data.slice(0, insertPos) + newItem + data.slice(insertPos)
 
         SaveResourceFile("ox_inventory", "/data/items.lua", updatedItems, -1)
 
-        exports["ox_inventory"].AddItem(id, "br_itemcreator", 1, {
+        exports["ox_inventory"].AddItem(id, "br_itemcreator", 2, {
             label: item.label,
             weight: item.weight,
             description: item.description,
