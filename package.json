@@ -2,11 +2,14 @@
   "name": "fivem_js",
   "type": "module",
   "scripts": {
-    "server": "bun build src/server/server.ts --outdir=./dist --target=node",
-    "client": "bun build src/client/client.ts --outdir=./dist --target=node"
+    "dev": "bunx rolldown -c",
+    "prod": "tsc --isolatedModules -p tsconfig.json --skipLibCheck && bunx rolldown -c"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "ezno": "^0.0.23",
+    "rolldown": "^1.0.0-beta.3",
+    "rollup": "^4.34.8"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -15,6 +18,7 @@
     "@citizenfx/client": "^2.0.12949-1",
     "@citizenfx/server": "^2.0.12949-1",
     "@nativewrappers/fivem": "^0.0.56",
+    "@overextended/ox_lib": "^3.29.0",
     "esx.js": "^1.1.8"
   }
 }

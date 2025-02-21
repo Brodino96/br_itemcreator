@@ -1,0 +1,10 @@
+{
+    "input_title": "Crea item",
+    "item_id": "ID",
+    "item_label": "Nome",
+    "item_image": "Url immagine",
+    "item_description": "Descrizione",
+    "item_weight": "Peso",
+    "item_degrade": "Tempo di vita",
+    "item_decay": "Scompare"
+}
