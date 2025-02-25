@@ -1,4 +1,8 @@
 {
     "debugMode": true,
-    "locale": "it"
+    "locale": "it",
+    "permissions": {
+        "type": "esx",
+        "value": "admin"
+    }
 }

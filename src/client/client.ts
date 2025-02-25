@@ -1,11 +1,15 @@
 import { inputDialog } from "@overextended/ox_lib/client"
 import { locale } from "../shared/locales"
 import type { ItemType } from "../types"
+import Logger from "../shared/logger"
 
 class Main {
 
+    private logger = new Logger()
+
     constructor() {
         onNet("br_itemcreator:showUi", () => {
+            this.logger.info("Showing ui")
             this.showUi()
         })
 
@@ -14,7 +18,7 @@ class Main {
         })
     }
 
-    private async showUi() {
+    private async showUi() { 
         const item = await this.input()
         if (!item) { return }
         emitNet("br_itemcreator:createItem", item)

@@ -1,6 +1,10 @@
 export type ConfigType = {
     debugMode: boolean,
-    locale: string
+    locale: string,
+    permissions: {
+        type: string,
+        value: string
+    }
 }
 
 export type ItemType = {

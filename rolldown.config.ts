@@ -1,7 +1,7 @@
 import { defineConfig } from "rolldown"
 
-export default defineConfig(
-    [{
+export default defineConfig([
+    {
         input: "src/client/client.ts",
         output: {
             file: "dist/client.js",
@@ -15,5 +15,5 @@ export default defineConfig(
             file: "dist/server.js",
             target: "esnext",
         }
-    }]
-)
+    }
+])

@@ -1,6 +1,6 @@
 import { Config } from "./config"
 
-export class Logger {
+export default class Logger {
     public async error(txt: string, bypass?: boolean) {
         if (Config.debugMode || bypass) {
             console.log(`[ERROR] ${txt}`)
