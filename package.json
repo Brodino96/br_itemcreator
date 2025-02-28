@@ -7,9 +7,7 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "ezno": "^0.0.23",
-    "rolldown": "^1.0.0-beta.3",
-    "rollup": "^4.34.8"
+    "rolldown": "^1.0.0-beta.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
