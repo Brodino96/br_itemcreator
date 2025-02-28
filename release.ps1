@@ -13,7 +13,7 @@ if (Test-Path $releaseFolder) {
 New-Item -ItemType Directory -Path $releaseFolder | Out-Null
 
 Write-Host "Building project..."
-bun run dev
+bun run prod
 
 Write-Host "Copying dist folder..."
 Copy-Item -Path "$PSScriptRoot\dist" -Destination "$releaseFolder\dist" -Recurse -Force
@@ -21,6 +21,13 @@ Copy-Item -Path "$PSScriptRoot\dist" -Destination "$releaseFolder\dist" -Recurse
 Write-Host "Copying necessary files..."
 Copy-Item -Path "$PSScriptRoot\src\fxmanifest.lua" -Destination "$releaseFolder\fxmanifest.lua" -Force
 Copy-Item -Path "$PSScriptRoot\src\config.json" -Destination "$releaseFolder\config.json" -Force
+
+if (Test-Path "$PSScriptRoot\src\locales") {
+    Write-Host "Copying locales folder..."
+    Copy-Item -Path "$PSScriptRoot\src\locales" -Destination "$releaseFolder\locales" -Recurse -Force
+} else {
+    Write-Host "Locales folder not found, skipping..."
+}
 
 $zipFile = "$releaseRoot\$projectName.zip"
 
