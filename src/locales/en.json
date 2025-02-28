@@ -1,0 +1,8 @@
+{
+    "input_title": "Create item",
+    "item_id": "ID",
+    "item_label": "Name",
+    "item_image": "Image url link",
+    "item_description": "Description",
+    "item_weight": "Weight"
+}
