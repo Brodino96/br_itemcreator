@@ -1,6 +1,6 @@
 {
     "debugMode": true,
-    "locale": "it",
+    "locale": "en",
     "permissions": {
         "type": "esx",
         "value": "admin"
