@@ -35,6 +35,7 @@ class Main {
         if (Config.permissions.type === "esx") {
             return this.ESX?.GetPlayerFromId(id).getGroup() === Config.permissions.value
         } else if (Config.permissions.type === "ace") {
+            //@ts-ignore
             return IsPlayerAceAllowed(id.toString(), Config.permissions.value)
         }
         this.logger.error("No valid permission type was specified in the config, defaulting check to [false]", true)
@@ -72,6 +73,7 @@ class Main {
 
         const updatedItems = data.slice(0, insertPos) + newItem + data.slice(insertPos)
 
+        //@ts-ignore
         SaveResourceFile("ox_inventory", "/data/items.lua", updatedItems, -1)
         this.logger.info("Saving item list")
 
